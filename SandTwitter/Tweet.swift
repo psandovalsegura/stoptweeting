@@ -18,6 +18,7 @@ class Tweet: NSObject {
     var favorited: Bool = false
     var retweeted: Bool = false
     var timestampString: String!
+    var idString: String!
     
     
     
@@ -49,6 +50,10 @@ class Tweet: NSObject {
         
         favorited = dictionary["favorited"] as! Bool
         retweeted = dictionary["retweeted"] as! Bool
+        
+        //Set up an id string
+        let postIdentification = dictionary["id"] as! Int
+        idString = String(postIdentification)
         
     }
     

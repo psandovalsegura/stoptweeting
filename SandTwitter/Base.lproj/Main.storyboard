@@ -61,7 +61,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="231" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IZJ-CL-8x9">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="231" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IZJ-CL-8x9">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -113,21 +113,21 @@
                                                             <rect key="frame" x="27" y="2" width="24" height="27"/>
                                                             <state key="normal" image="reply-action_0"/>
                                                             <connections>
-                                                                <action selector="onShare:" destination="2PW-RI-z02" eventType="touchUpInside" id="rbY-8p-5yS"/>
+                                                                <action selector="onShare:" destination="LZZ-JT-rSH" eventType="touchUpInside" id="XHv-SC-05b"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5DS-qt-j5c" userLabel="Retweet Button">
                                                             <rect key="frame" x="88" y="3" width="26" height="26"/>
                                                             <state key="normal" image="retweet-action"/>
                                                             <connections>
-                                                                <action selector="onRetweet:" destination="2PW-RI-z02" eventType="touchUpInside" id="efQ-h2-6Uk"/>
+                                                                <action selector="onRetweet:" destination="LZZ-JT-rSH" eventType="touchUpInside" id="lua-qE-3R3"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejZ-og-Ct1" userLabel="Favorites Button">
                                                             <rect key="frame" x="156" y="3" width="20" height="27"/>
                                                             <state key="normal" image="like-action"/>
                                                             <connections>
-                                                                <action selector="onFavorite:" destination="2PW-RI-z02" eventType="touchUpInside" id="see-qA-TiX"/>
+                                                                <action selector="onFavorite:" destination="LZZ-JT-rSH" eventType="touchUpInside" id="mZL-XR-EXO"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -182,9 +182,12 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="favoriteButton" destination="ejZ-og-Ct1" id="iiX-gX-1Ml"/>
                                             <outlet property="nameLabel" destination="y8p-yk-jDF" id="JI5-Oa-vvI"/>
                                             <outlet property="profileImageView" destination="F7T-w9-tQd" id="mfA-8S-56M"/>
+                                            <outlet property="retweetButton" destination="5DS-qt-j5c" id="N4Y-X5-TBz"/>
                                             <outlet property="screenNameLabel" destination="klF-AU-g8q" id="xf0-83-9za"/>
+                                            <outlet property="shareButton" destination="wHE-Ss-sjr" id="sbK-Un-w1b"/>
                                             <outlet property="timestampLabel" destination="yfg-hd-kTf" id="kSR-t1-uLN"/>
                                             <outlet property="tweetTextLabel" destination="xip-eG-MS1" id="WUH-tw-XCm"/>
                                         </connections>
@@ -214,7 +217,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1W8-fT-z27" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1862" y="308"/>
+            <point key="canvasLocation" x="1730" y="304"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Lal-qZ-qQF">

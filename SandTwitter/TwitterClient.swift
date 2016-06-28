@@ -62,7 +62,7 @@ class TwitterClient: BDBOAuth1SessionManager {
         }
     }
     
-    func homeTimeline(success: ([Tweet]) -> (), failure: (NSError) -> ()) {
+    func homeTimeline(success: ([Tweet]) -> (), failure: (NSError) -> Void) {
         GET("1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task:NSURLSessionDataTask, response: AnyObject?) in
             
             let dictionaries = response as! [NSDictionary]
@@ -78,7 +78,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     
     func currentAccount(success: (User) -> (), failure: (NSError) -> ()) {
         GET("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
-            print("Account: \(response)")
+            
             let userDictionary = response as! NSDictionary
             let user = User(dictionary: userDictionary)
             
@@ -88,4 +88,32 @@ class TwitterClient: BDBOAuth1SessionManager {
             failure(error)
         })
     }
+    
+    
+    func retweet(id: String, success: (Tweet) -> Void, failure: (NSError) -> Void) {
+        POST("1.1/statuses/retweet/\(id).json", parameters: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+            
+            let tweetDictionary = response as! NSDictionary
+            let tweet = Tweet(dictionary: tweetDictionary)
+            
+            success(tweet)
+            
+        }) { (task: NSURLSessionDataTask?, error: NSError) in
+            failure(error)
+        }
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

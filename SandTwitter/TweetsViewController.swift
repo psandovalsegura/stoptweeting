@@ -11,7 +11,9 @@ import Alamofire
 import AlamofireImage
 
 class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     var tweets: [Tweet]!
+    var refreshControl = UIRefreshControl()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -19,7 +21,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        loadTweetData()
+        loadTweetData("initial")
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -27,11 +29,18 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.estimatedRowHeight = 400.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        //Refresh control setup
+        refreshControl.addTarget(self, action: #selector(loadTweetData(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.backgroundColor = UIColor.clearColor()
+        refreshControl.tintColor = UIColor.blackColor()
+        refreshControl.attributedTitle = NSAttributedString(string: "Last updated on \(TimeAid.getTimestamp())", attributes: [NSForegroundColorAttributeName: UIColor.blackColor()])
+        tableView.insertSubview(refreshControl, atIndex: 0)
+        
     }
     
 
     
-    func loadTweetData() {
+    func loadTweetData(point: AnyObject) {
         TwitterClient.sharedInstance.homeTimeline({ (tweets: [Tweet]) in
             self.tweets = tweets
             
@@ -56,32 +65,16 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tweetCell") as! TweetTableViewCell
-
-        let currentTweet = self.tweets[indexPath.row]
-        cell.tweetTextLabel.text = currentTweet.text!
-        cell.profileImageView.af_setImageWithURL((currentTweet.creationUser?.profileUrl)!)
-        cell.nameLabel.text = currentTweet.creationUser?.name
-        cell.screenNameLabel.text = currentTweet.creationUser?.screenname
         
-        cell.timestampLabel.text = TimeAid.getTimeDifferenceForTwitterCell(currentTweet.timestampString)
+        //Set all tags
+        cell.shareButton.tag = indexPath.row
+        cell.retweetButton.tag = indexPath.row
+        cell.favoriteButton.tag = indexPath.row
+        
+        cell.currentTweet = self.tweets[indexPath.row]
         
         
         return cell
-    }
-    
-    
-    @IBAction func onShare(sender: AnyObject) {
-        
-    }
-    
-    
-    @IBAction func onRetweet(sender: AnyObject) {
-        
-    }
-    
-    @IBAction func onFavorite(sender: AnyObject) {
-        
-        
     }
 
     @IBAction func onLogout(sender: AnyObject) {
