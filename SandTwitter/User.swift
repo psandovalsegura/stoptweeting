@@ -14,6 +14,10 @@ class User: NSObject {
     var profileUrl: NSURL?
     var tagline: String?
     
+    var followRequestSent: Bool?
+    var friendsCount: Int?
+    //var profilePictureImage: UIImage?
+    
     var dictionary: NSDictionary?
     
     static let userDidLogoutNotification = "UserDidLogout"
@@ -62,5 +66,8 @@ class User: NSObject {
         
         tagline = dictionary["description"] as? String
         
+        followRequestSent = dictionary["follow_request_sent"] as? Bool
+        
+        friendsCount = dictionary["friends_count"] as? Int
     }
 }

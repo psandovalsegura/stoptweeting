@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var tweets: [Tweet]!
@@ -57,11 +59,30 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         let currentTweet = self.tweets[indexPath.row]
         cell.tweetTextLabel.text = currentTweet.text!
+        cell.profileImageView.af_setImageWithURL((currentTweet.creationUser?.profileUrl)!)
+        cell.nameLabel.text = currentTweet.creationUser?.name
+        cell.screenNameLabel.text = currentTweet.creationUser?.screenname
+        
+        cell.timestampLabel.text = TimeAid.getTimeDifferenceForTwitterCell(currentTweet.timestampString)
+        
         
         return cell
     }
     
     
+    @IBAction func onShare(sender: AnyObject) {
+        
+    }
+    
+    
+    @IBAction func onRetweet(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func onFavorite(sender: AnyObject) {
+        
+        
+    }
 
     @IBAction func onLogout(sender: AnyObject) {
         TwitterClient.sharedInstance.logOut()

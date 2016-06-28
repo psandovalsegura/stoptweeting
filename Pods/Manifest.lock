@@ -14,17 +14,24 @@ PODS:
   - AFNetworking/Serialization (3.0.0)
   - AFNetworking/UIKit (3.0.0):
     - AFNetworking/NSURLSession
+  - Alamofire (3.4.1)
+  - AlamofireImage (2.4.0):
+    - Alamofire (~> 3.3)
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
 
 DEPENDENCIES:
   - AFNetworking (= 3.0.0)
+  - Alamofire
+  - AlamofireImage
   - BDBOAuth1Manager (= 2.0.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 932ff751f9d6fb1dad0b3af58b7e3ffba0a4e7fd
+  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  AlamofireImage: 87408b652e0f5ae5fe364035f15aea8b9b24c77e
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
 
-PODFILE CHECKSUM: e08c7010718174409f01c0cbfdfc13b70dd35811
+PODFILE CHECKSUM: 62146c4017c12a217ece4c3e254e773c9926c288
 
 COCOAPODS: 1.0.1

@@ -14,6 +14,13 @@ class Tweet: NSObject {
     var retweetCount: Int = 0
     var favoritesCount: Int = 0
     
+    var creationUser: User?
+    var favorited: Bool = false
+    var retweeted: Bool = false
+    var timestampString: String!
+    
+    
+    
     
     init(dictionary: NSDictionary) {
         text = dictionary["text"] as? String
@@ -28,6 +35,21 @@ class Tweet: NSObject {
             formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
             timestamp = formatter.dateFromString(timestampString)
         }
+        
+        //Prepare timestamp for use in TimeAid class
+        let time = String(timestamp!)
+        var currentDate2String = time
+        for _ in 1...6 {
+            currentDate2String.removeAtIndex(currentDate2String.endIndex.predecessor())
+        }
+        self.timestampString = currentDate2String
+        
+        let userDictionary = dictionary["user"] as! NSDictionary
+        creationUser = User(dictionary: userDictionary)
+        
+        favorited = dictionary["favorited"] as! Bool
+        retweeted = dictionary["retweeted"] as! Bool
+        
     }
     
     class func tweetsFromArray(dictionaries: [NSDictionary]) -> [Tweet] {
