@@ -65,15 +65,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tweetCell") as! TweetTableViewCell
-        
-        //Set all tags
-        cell.shareButton.tag = indexPath.row
-        cell.retweetButton.tag = indexPath.row
-        cell.favoriteButton.tag = indexPath.row
-        
         cell.currentTweet = self.tweets[indexPath.row]
-        
-        
         return cell
     }
 
