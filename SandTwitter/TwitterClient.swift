@@ -103,6 +103,20 @@ class TwitterClient: BDBOAuth1SessionManager {
         }
     }
     
+    func favorite(id: String, success:(Tweet) -> Void, failure: (NSError) -> Void) {
+        POST("1.1/favorites/create.json?id=\(id)", parameters: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+            
+            let tweetDictionary = response as! NSDictionary
+            let tweet = Tweet(dictionary: tweetDictionary)
+            
+            success(tweet)
+            
+        }) { (task: NSURLSessionDataTask?, error: NSError) in
+            failure(error)
+        }
+    }
+
+    
 }
 
 

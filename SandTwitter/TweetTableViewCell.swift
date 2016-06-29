@@ -28,6 +28,8 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var favoritesCountLabel: UILabel!
     @IBOutlet weak var retweetCountLabel: UILabel!
     
+    @IBOutlet weak var profileButton: UIButton!
+    
     
     var currentTweet: Tweet! {
         didSet {
@@ -52,7 +54,6 @@ class TweetTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
     
     @IBAction func onShare(sender: AnyObject) {
         print("tapped share")
@@ -61,17 +62,28 @@ class TweetTableViewCell: UITableViewCell {
     @IBAction func onRetweet(sender: AnyObject) {
         //Change the image
         retweetImageView.image = UIImage(named: "retweet-action-on")
+        let newCount = Int(retweetCountLabel.text!)! + 1
+        retweetCountLabel.text = String(newCount)
         
         TwitterClient.sharedInstance.retweet(currentTweet.idString, success: { (returnTweet: Tweet) in
             //Do something with return tweet
-            print("\(self.currentTweet.creationUser?.screenname) 's tweet retweeted!")
         }) { (error: NSError) in
             print("Error: \(error.localizedDescription)")
         }
+        
     }
     
     @IBAction func onFavorite(sender: AnyObject) {
-        print("tapped favorite")
+        //Change the image
+        favoriteImageView.image = UIImage(named: "like-action-on")
+        let newCount = Int(favoritesCountLabel.text!)! + 1
+        favoritesCountLabel.text = String(newCount)
+        
+        TwitterClient.sharedInstance.favorite(currentTweet.idString, success: { (returnTweet: Tweet) in
+            //Do something with return tweet
+        }) { (error: NSError) in
+            print("Error: \(error.localizedDescription)")
+        }
     }
     
 }

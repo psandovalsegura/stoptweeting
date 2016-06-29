@@ -42,12 +42,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="7RX-7J-oFW" kind="presentation" identifier="loginSegue" id="9A5-rk-DAh"/>
+                        <segue destination="YR1-Nv-kqB" kind="presentation" identifier="loginSegue" id="JMw-Le-BXG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="287" y="337"/>
+            <point key="canvasLocation" x="-396" y="168"/>
         </scene>
         <!--Stop Tweeting!-->
         <scene sceneID="SaY-83-YCt">
@@ -177,16 +177,34 @@
                                                         <action selector="onFavorite:" destination="LZZ-JT-rSH" eventType="touchUpInside" id="2dX-ht-WCj"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kA3-dK-h0n" userLabel="Profile Pic Button">
+                                                    <rect key="frame" x="2" y="3" width="57" height="55"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="151" id="tYK-Vp-yJq"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="tYK-Vp-yJq"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <connections>
+                                                        <segue destination="IuR-7d-aaQ" kind="show" identifier="toProfileView" id="TPd-Wq-rr1"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="F7T-w9-tQd" firstAttribute="centerX" secondItem="kA3-dK-h0n" secondAttribute="centerX" id="0uw-VH-VPH"/>
                                                 <constraint firstItem="klF-AU-g8q" firstAttribute="leading" secondItem="y8p-yk-jDF" secondAttribute="trailing" constant="8" id="2n5-cc-NeP"/>
                                                 <constraint firstItem="5dq-BL-SUt" firstAttribute="centerY" secondItem="d96-9G-aFs" secondAttribute="centerY" id="3ue-7V-ast"/>
                                                 <constraint firstItem="w2l-e7-ql2" firstAttribute="leading" secondItem="xip-eG-MS1" secondAttribute="leading" id="5oy-9E-WY6"/>
+                                                <constraint firstItem="F7T-w9-tQd" firstAttribute="centerX" secondItem="kA3-dK-h0n" secondAttribute="centerX" id="BKt-Rt-3KD"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="w2l-e7-ql2" secondAttribute="bottom" constant="24.5" id="Cmr-wn-ojv"/>
                                                 <constraint firstItem="5TA-YD-Wvj" firstAttribute="leading" secondItem="d96-9G-aFs" secondAttribute="trailing" constant="43" id="GjK-gL-O7g"/>
                                                 <constraint firstAttribute="bottom" secondItem="dcb-CD-DuC" secondAttribute="bottom" constant="24.5" id="I9J-tA-0i5"/>
                                                 <constraint firstItem="d96-9G-aFs" firstAttribute="leading" secondItem="w2l-e7-ql2" secondAttribute="trailing" constant="43" id="KVg-LF-eae"/>
+                                                <constraint firstItem="kA3-dK-h0n" firstAttribute="leading" secondItem="kgr-Ad-7ob" secondAttribute="leading" constant="2" id="KcT-il-p7U"/>
                                                 <constraint firstAttribute="trailing" secondItem="xip-eG-MS1" secondAttribute="trailing" constant="8" id="O6S-qD-MbL"/>
+                                                <constraint firstItem="F7T-w9-tQd" firstAttribute="centerY" secondItem="kA3-dK-h0n" secondAttribute="centerY" id="O7e-Xl-swr"/>
                                                 <constraint firstItem="5TA-YD-Wvj" firstAttribute="centerY" secondItem="d96-9G-aFs" secondAttribute="centerY" id="PlS-bo-sHH"/>
                                                 <constraint firstItem="F7T-w9-tQd" firstAttribute="leading" secondItem="kgr-Ad-7ob" secondAttribute="leading" constant="8" id="PtX-3X-OUa"/>
                                                 <constraint firstItem="d96-9G-aFs" firstAttribute="centerY" secondItem="w2l-e7-ql2" secondAttribute="centerY" id="SqV-Oh-Dz1"/>
@@ -201,6 +219,7 @@
                                                 <constraint firstItem="y8p-yk-jDF" firstAttribute="leading" secondItem="F7T-w9-tQd" secondAttribute="trailing" constant="8" id="hai-9m-e0U"/>
                                                 <constraint firstItem="klF-AU-g8q" firstAttribute="baseline" secondItem="y8p-yk-jDF" secondAttribute="baseline" id="jfh-xX-Avd"/>
                                                 <constraint firstItem="yfg-hd-kTf" firstAttribute="top" secondItem="kgr-Ad-7ob" secondAttribute="top" constant="8" id="jk4-DV-hcl"/>
+                                                <constraint firstItem="kA3-dK-h0n" firstAttribute="top" secondItem="kgr-Ad-7ob" secondAttribute="top" constant="3" id="jll-Qp-UDZ"/>
                                                 <constraint firstItem="F7T-w9-tQd" firstAttribute="top" secondItem="kgr-Ad-7ob" secondAttribute="top" constant="8" id="kgc-6v-9bU"/>
                                                 <constraint firstItem="5dq-BL-SUt" firstAttribute="leading" secondItem="d96-9G-aFs" secondAttribute="trailing" constant="5" id="kwR-wX-uZW"/>
                                                 <constraint firstItem="DhI-Yq-Ct2" firstAttribute="centerY" secondItem="dcb-CD-DuC" secondAttribute="centerY" id="n7I-Xp-npz"/>
@@ -214,6 +233,7 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="BKt-Rt-3KD"/>
                                                     <exclude reference="qhh-PB-O4e"/>
                                                     <exclude reference="v4X-hK-d6J"/>
                                                 </mask>
@@ -221,9 +241,10 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="favoriteButton" destination="J0Q-iK-EiW" id="Ai3-RR-RFK"/>
-                                            <outlet property="favoriteImageView" destination="5TA-YD-Wvj" id="1Bx-64-uL3"/>
+                                            <outlet property="favoriteImageView" destination="5TA-YD-Wvj" id="6EQ-hh-Uxg"/>
                                             <outlet property="favoritesCountLabel" destination="ajc-Di-XJH" id="nIc-zt-hDD"/>
                                             <outlet property="nameLabel" destination="y8p-yk-jDF" id="JI5-Oa-vvI"/>
+                                            <outlet property="profileButton" destination="kA3-dK-h0n" id="Gd9-dJ-NnE"/>
                                             <outlet property="profileImageView" destination="F7T-w9-tQd" id="mfA-8S-56M"/>
                                             <outlet property="retweetButton" destination="DhI-Yq-Ct2" id="1ul-fo-U9E"/>
                                             <outlet property="retweetCountLabel" destination="5dq-BL-SUt" id="V1G-he-fgq"/>
@@ -233,6 +254,7 @@
                                             <outlet property="shareImageView" destination="w2l-e7-ql2" id="r9k-jZ-TBp"/>
                                             <outlet property="timestampLabel" destination="yfg-hd-kTf" id="kSR-t1-uLN"/>
                                             <outlet property="tweetTextLabel" destination="xip-eG-MS1" id="WUH-tw-XCm"/>
+                                            <segue destination="urx-gp-v93" kind="show" identifier="toDetailView" id="dge-HV-sEH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -243,7 +265,7 @@
                             <constraint firstAttribute="trailing" secondItem="IZJ-CL-8x9" secondAttribute="trailing" id="GyC-5P-Vcg"/>
                             <constraint firstItem="IZJ-CL-8x9" firstAttribute="top" secondItem="Q8D-q2-Nnz" secondAttribute="top" id="Nvw-5f-SEC"/>
                             <constraint firstItem="IZJ-CL-8x9" firstAttribute="leading" secondItem="Q8D-q2-Nnz" secondAttribute="leading" id="kRV-A4-SCc"/>
-                            <constraint firstItem="IZJ-CL-8x9" firstAttribute="bottom" secondItem="mmE-bW-JSg" secondAttribute="top" id="vPS-mw-VMq"/>
+                            <constraint firstItem="IZJ-CL-8x9" firstAttribute="bottom" secondItem="mmE-bW-JSg" secondAttribute="top" constant="49" id="vPS-mw-VMq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Stop Tweeting!" id="sRT-7r-Meg">
@@ -260,12 +282,106 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1W8-fT-z27" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1675" y="337"/>
+            <point key="canvasLocation" x="1873" y="68"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Profile View Controller-->
+        <scene sceneID="aCD-sT-QKf">
+            <objects>
+                <viewController id="IuR-7d-aaQ" customClass="ProfileViewController" customModule="SandTwitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YTB-dp-I1Y"/>
+                        <viewControllerLayoutGuide type="bottom" id="BE4-FO-JnN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FTM-ek-0ma">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5tT-4i-RqI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1744" y="765"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="pPZ-Zm-m1K">
+            <objects>
+                <viewController id="urx-gp-v93" customClass="DetailViewController" customModule="SandTwitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4Fr-pD-Hgr"/>
+                        <viewControllerLayoutGuide type="bottom" id="kSu-hu-0fa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="i3i-Jy-MfO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ge6-XW-nLi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2547" y="68"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="XjE-sU-BN3">
+            <objects>
+                <viewController id="Okk-yb-oVL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wEy-Eq-cr5"/>
+                        <viewControllerLayoutGuide type="bottom" id="EMY-L9-OPu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NRy-1H-sWl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="xYJ-uU-Cmo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XHo-bz-fb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="551" y="981"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="3ds-At-3vM">
+            <objects>
+                <viewController id="ACI-YF-Qsy" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0z7-Ua-5Dt"/>
+                        <viewControllerLayoutGuide type="bottom" id="A6q-YD-P4y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="p0b-vl-2bf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="T52-sO-nqt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dbw-48-qHg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="407" y="-1075"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="3aR-fy-XQC">
+            <objects>
+                <tabBarController storyboardIdentifier="TabBarNavigationController" id="YR1-Nv-kqB" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Hgk-6B-vfH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ACI-YF-Qsy" kind="relationship" relationship="viewControllers" id="k6p-4W-AEd"/>
+                        <segue destination="Okk-yb-oVL" kind="relationship" relationship="viewControllers" id="AK3-jf-ENO"/>
+                        <segue destination="7RX-7J-oFW" kind="relationship" relationship="viewControllers" id="zYw-EM-q5L"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EdX-zJ-nF8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="393" y="-22"/>
+        </scene>
+        <!--Home-->
         <scene sceneID="Lal-qZ-qQF">
             <objects>
                 <navigationController storyboardIdentifier="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="7RX-7J-oFW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" id="yRg-Kc-qve"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yIq-KC-w2f">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -278,7 +394,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mkj-L6-IRM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1023" y="337"/>
+            <point key="canvasLocation" x="1196" y="23"/>
         </scene>
     </scenes>
     <resources>

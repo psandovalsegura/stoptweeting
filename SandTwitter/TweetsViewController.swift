@@ -52,6 +52,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }) { (error: NSError) in
             print(error.localizedDescription)
         }
+        
+        self.refreshControl.endRefreshing()
     }
 
     
@@ -66,6 +68,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tweetCell") as! TweetTableViewCell
         cell.currentTweet = self.tweets[indexPath.row]
+        cell.profileButton.tag = indexPath.row
         return cell
     }
 
@@ -73,14 +76,21 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         TwitterClient.sharedInstance.logOut()
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toDetailView", let detailVC = segue.destinationViewController as? DetailViewController {
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPathForCell(cell)
+            detailVC.tweet = self.tweets[(indexPath?.row)!]
+        } else if segue.identifier == "toProfileView", let profileVC = segue.destinationViewController as? ProfileViewController {
+            print("profile image clicked")
+            let currentTweet = self.tweets[sender!.tag]
+            profileVC.user = currentTweet.creationUser!
+        }
     }
-    */
+    
 
 }
