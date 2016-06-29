@@ -10,16 +10,30 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    var user: User! {
-        didSet {
-            print("recieved user")
-        }
-    }
+    var user: User!
 
+    @IBOutlet weak var profileImageView: UIImageView!
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var screenName: UILabel!
+    
+    @IBOutlet weak var taglineLabel: UILabel!
+    
+    
+    @IBOutlet weak var followingCountLabel: UILabel!
+    @IBOutlet weak var followersCountLabel: UILabel!
+    @IBOutlet weak var statusesCountLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        profileImageView.af_setImageWithURL(self.user.profileUrl!)
+        nameLabel.text = self.user.name
+        screenName.text = "@\(self.user.screenname!)"
+        taglineLabel.text = "\(self.user.tagline!)"
+        followersCountLabel.text = String(self.user.followersCount!)
+        followingCountLabel.text = String(self.user.friendsCount!)
+        statusesCountLabel.text = String(self.user.statusesCount!)
     }
 
     override func didReceiveMemoryWarning() {

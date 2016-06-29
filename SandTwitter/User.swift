@@ -16,6 +16,8 @@ class User: NSObject {
     
     var followRequestSent: Bool?
     var friendsCount: Int?
+    var followersCount: Int?
+    var statusesCount: Int?
     //var profilePictureImage: UIImage?
     
     var dictionary: NSDictionary?
@@ -65,9 +67,13 @@ class User: NSObject {
         }
         
         tagline = dictionary["description"] as? String
+        print("\(name) account created. The tagline is below \n \(tagline)")
         
         followRequestSent = dictionary["follow_request_sent"] as? Bool
         
         friendsCount = dictionary["friends_count"] as? Int
+        followersCount = dictionary["followers_count"] as? Int
+        statusesCount = dictionary["statuses_count"] as? Int
+        
     }
 }

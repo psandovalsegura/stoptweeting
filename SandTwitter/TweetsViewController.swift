@@ -86,7 +86,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let indexPath = tableView.indexPathForCell(cell)
             detailVC.tweet = self.tweets[(indexPath?.row)!]
         } else if segue.identifier == "toProfileView", let profileVC = segue.destinationViewController as? ProfileViewController {
-            print("profile image clicked")
             let currentTweet = self.tweets[sender!.tag]
             profileVC.user = currentTweet.creationUser!
         }

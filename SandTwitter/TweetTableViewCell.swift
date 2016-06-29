@@ -36,7 +36,7 @@ class TweetTableViewCell: UITableViewCell {
             tweetTextLabel.text = currentTweet.text!
             profileImageView.af_setImageWithURL((currentTweet.creationUser?.profileUrl)!)
             nameLabel.text = currentTweet.creationUser?.name
-            screenNameLabel.text = currentTweet.creationUser?.screenname
+            screenNameLabel.text = "@\(currentTweet.creationUser!.screenname!)"
             timestampLabel.text = TimeAid.getTimeDifferenceForTwitterCell(currentTweet.timestampString)
             retweetCountLabel.text = String(currentTweet.retweetCount)
             favoritesCountLabel.text = String(currentTweet.favoritesCount)
