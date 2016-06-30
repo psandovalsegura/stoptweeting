@@ -42,13 +42,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func loadTweetData(point: AnyObject) {
         TwitterClient.sharedInstance.homeTimeline({ (tweets: [Tweet]) in
+            
             self.tweets = tweets
-            
-            for tweet in tweets {
-                print(tweet.text)
-            }
-            
             self.tableView.reloadData()
+            
         }) { (error: NSError) in
             print(error.localizedDescription)
         }

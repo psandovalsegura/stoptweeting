@@ -30,8 +30,8 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         if let url = tweet.creationUser?.profileUrl {
-         profileImageView.af_setImageWithURL(url)
+        if let url = tweet.creationUser?.profileUrl {
+            profileImageView.af_setImageWithURL(url)
         }
         //profileImageView.af_setImageWithURL((tweet.creationUser?.profileUrl)!)
         nameLabel.text = tweet.creationUser?.name

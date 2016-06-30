@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var user: User!
 
@@ -19,14 +19,22 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var taglineLabel: UILabel!
     
-    
     @IBOutlet weak var followingCountLabel: UILabel!
     @IBOutlet weak var followersCountLabel: UILabel!
     @IBOutlet weak var statusesCountLabel: UILabel!
     
+    @IBOutlet weak var tableView: UITableView!
+    var tweets: [Tweet]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.estimatedRowHeight = 400.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         profileImageView.af_setImageWithURL(self.user.profileUrl!)
         nameLabel.text = self.user.name
         screenName.text = "@\(self.user.screenname!)"
@@ -34,13 +42,36 @@ class ProfileViewController: UIViewController {
         followersCountLabel.text = String(self.user.followersCount!)
         followingCountLabel.text = String(self.user.friendsCount!)
         statusesCountLabel.text = String(self.user.statusesCount!)
+        
+        loadUserTweets("initial")
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let tweets = self.tweets {
+            return tweets.count
+        } else {
+            return 0
+        }
     }
     
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("tweetCell") as! TweetTableViewCell
+        cell.currentTweet = self.tweets[indexPath.row]
+        return cell
+    }
+    
+    func loadUserTweets(point: AnyObject) {
+        TwitterClient.sharedInstance.userTimeline(user.idString!, screenName: user.screenname!, success: { (userTweets: [Tweet]) in
+            
+            //Save loaded tweets
+            self.tweets = userTweets
+            self.tableView.reloadData()
+            
+        }) { (error: NSError) in
+            print(error.localizedDescription)
+        }
+    }
 
     /*
     // MARK: - Navigation

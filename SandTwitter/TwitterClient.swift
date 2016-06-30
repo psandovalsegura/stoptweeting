@@ -115,6 +115,22 @@ class TwitterClient: BDBOAuth1SessionManager {
             failure(error)
         }
     }
+    
+    func userTimeline(idString: String, screenName: String, success: ([Tweet]) -> Void, failure: (NSError) -> Void) {
+        print("@\(screenName) requesting to load user tweets...\n The endpoint looks like this: 1.1/statuses/user_timeline.json?user_id=\(idString)&screen_name=\(screenName)")
+        GET("1.1/statuses/user_timeline.json?user_id=\(idString)&screen_name=\(screenName)", parameters: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+            
+            let dictionaries = response as! [NSDictionary]
+            
+            let tweets = Tweet.tweetsFromArray(dictionaries)
+            success(tweets)
+            
+            }, failure: { (task:NSURLSessionDataTask?, error: NSError) in
+                failure(error)
+                
+        })
+    }
+
 
     
 }

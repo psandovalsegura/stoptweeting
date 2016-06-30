@@ -16,6 +16,7 @@
 		9B8368D11D23B24E001FB39C /* SanFranciscoText-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B8368CB1D23B1D0001FB39C /* SanFranciscoText-Medium.otf */; };
 		9B8368D21D23B24E001FB39C /* SanFranciscoText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B8368CC1D23B1D0001FB39C /* SanFranciscoText-Regular.otf */; };
 		9B8368D31D23B24E001FB39C /* SanFranciscoText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B8368CD1D23B1D0001FB39C /* SanFranciscoText-Semibold.otf */; };
+		9B8368D51D246215001FB39C /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8368D41D246215001FB39C /* MeViewController.swift */; };
 		9BE65F741D217077002E8097 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE65F731D217077002E8097 /* AppDelegate.swift */; };
 		9BE65F791D217077002E8097 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE65F771D217077002E8097 /* Main.storyboard */; };
 		9BE65F7B1D217077002E8097 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BE65F7A1D217077002E8097 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 		9B8368CB1D23B1D0001FB39C /* SanFranciscoText-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Medium.otf"; sourceTree = "<group>"; };
 		9B8368CC1D23B1D0001FB39C /* SanFranciscoText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Regular.otf"; sourceTree = "<group>"; };
 		9B8368CD1D23B1D0001FB39C /* SanFranciscoText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Semibold.otf"; sourceTree = "<group>"; };
+		9B8368D41D246215001FB39C /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		9BE65F701D217077002E8097 /* SandTwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SandTwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BE65F731D217077002E8097 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BE65F781D217077002E8097 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				9B23387B1D21E9A1003BD7DA /* TweetsViewController.swift */,
 				9BE946921D239A5A00A52030 /* DetailViewController.swift */,
 				9BE946941D23A28300A52030 /* ProfileViewController.swift */,
+				9B8368D41D246215001FB39C /* MeViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BE946931D239A5A00A52030 /* DetailViewController.swift in Sources */,
+				9B8368D51D246215001FB39C /* MeViewController.swift in Sources */,
 				9BE65F8F1D21CDA2002E8097 /* TwitterClient.swift in Sources */,
 				9BE946951D23A28300A52030 /* ProfileViewController.swift in Sources */,
 				9BE65F861D21727C002E8097 /* LoginViewController.swift in Sources */,
