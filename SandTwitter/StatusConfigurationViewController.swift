@@ -14,15 +14,32 @@ class StatusConfigurationViewController: UIViewController {
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var characterCountLabel: UILabel!
+    
+    var charactersAllowed = 140
+    var currentCharacters = 0
+    
+    var uploadedTweet: Tweet?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         profileImageView.setImageWithURL((User.currentUser?.profileUrl)!)
+        characterCountLabel.text = String(charactersAllowed)
     }
 
     
+    @IBAction func duringEditing(sender: AnyObject) {
+        let characterChange = (textField.text?.characters.count)! - currentCharacters
+        currentCharacters += characterChange
+        
+        if (currentCharacters >= 140) {
+            self.view.endEditing(true)
+        }
+        
+        characterCountLabel.text = String(charactersAllowed - currentCharacters)
+    }
     
     @IBAction func onCancel(sender: AnyObject) {
         
@@ -56,15 +73,16 @@ class StatusConfigurationViewController: UIViewController {
     }
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        // Load the new tweet into the home view without reloading data
+        if segue.identifier == "onTweetSend", let homeVC = segue.destinationViewController as? TweetsViewController {
+            
+        }
     }
-    */
+ 
     
     // MARK: - Lifecycle
     

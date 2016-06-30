@@ -33,7 +33,6 @@ class DetailViewController: UIViewController {
         if let url = tweet.creationUser?.profileUrl {
             profileImageView.af_setImageWithURL(url)
         }
-        //profileImageView.af_setImageWithURL((tweet.creationUser?.profileUrl)!)
         nameLabel.text = tweet.creationUser?.name
         screenNameLabel.text = "@\(tweet.creationUser!.screenname!)"
         contentLabel.text = tweet.text

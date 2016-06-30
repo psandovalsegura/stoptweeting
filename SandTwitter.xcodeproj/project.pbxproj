@@ -18,6 +18,8 @@
 		9B8368D31D23B24E001FB39C /* SanFranciscoText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B8368CD1D23B1D0001FB39C /* SanFranciscoText-Semibold.otf */; };
 		9B8368D51D246215001FB39C /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8368D41D246215001FB39C /* MeViewController.swift */; };
 		9B8368D71D24F044001FB39C /* StatusConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8368D61D24F044001FB39C /* StatusConfigurationViewController.swift */; };
+		9B8368D91D251D25001FB39C /* DirectMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8368D81D251D25001FB39C /* DirectMessageViewController.swift */; };
+		9B8368FB1D25CB3F001FB39C /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8368FA1D25CB3F001FB39C /* InfiniteScrollActivityView.swift */; };
 		9BE65F741D217077002E8097 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE65F731D217077002E8097 /* AppDelegate.swift */; };
 		9BE65F791D217077002E8097 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE65F771D217077002E8097 /* Main.storyboard */; };
 		9BE65F7B1D217077002E8097 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BE65F7A1D217077002E8097 /* Assets.xcassets */; };
@@ -45,6 +47,8 @@
 		9B8368CD1D23B1D0001FB39C /* SanFranciscoText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Semibold.otf"; sourceTree = "<group>"; };
 		9B8368D41D246215001FB39C /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		9B8368D61D24F044001FB39C /* StatusConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusConfigurationViewController.swift; sourceTree = "<group>"; };
+		9B8368D81D251D25001FB39C /* DirectMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectMessageViewController.swift; sourceTree = "<group>"; };
+		9B8368FA1D25CB3F001FB39C /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
 		9BE65F701D217077002E8097 /* SandTwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SandTwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BE65F731D217077002E8097 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BE65F781D217077002E8097 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				9B23387E1D21ECA5003BD7DA /* TweetTableViewCell.swift */,
+				9B8368FA1D25CB3F001FB39C /* InfiniteScrollActivityView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 				9BE946941D23A28300A52030 /* ProfileViewController.swift */,
 				9B8368D41D246215001FB39C /* MeViewController.swift */,
 				9B8368D61D24F044001FB39C /* StatusConfigurationViewController.swift */,
+				9B8368D81D251D25001FB39C /* DirectMessageViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -316,10 +322,12 @@
 				9BE946931D239A5A00A52030 /* DetailViewController.swift in Sources */,
 				9B8368D71D24F044001FB39C /* StatusConfigurationViewController.swift in Sources */,
 				9B8368D51D246215001FB39C /* MeViewController.swift in Sources */,
+				9B8368D91D251D25001FB39C /* DirectMessageViewController.swift in Sources */,
 				9BE65F8F1D21CDA2002E8097 /* TwitterClient.swift in Sources */,
 				9BE946951D23A28300A52030 /* ProfileViewController.swift in Sources */,
 				9BE65F861D21727C002E8097 /* LoginViewController.swift in Sources */,
 				9B23387C1D21E9A1003BD7DA /* TweetsViewController.swift in Sources */,
+				9B8368FB1D25CB3F001FB39C /* InfiniteScrollActivityView.swift in Sources */,
 				9BE65F741D217077002E8097 /* AppDelegate.swift in Sources */,
 				9BE65F8A1D21C5B1002E8097 /* User.swift in Sources */,
 				9B2B609F1D23111300EBD4B8 /* TimeAid.swift in Sources */,

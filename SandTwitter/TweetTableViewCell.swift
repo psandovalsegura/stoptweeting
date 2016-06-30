@@ -40,6 +40,14 @@ class TweetTableViewCell: UITableViewCell {
             timestampLabel.text = TimeAid.getTimeDifferenceForTwitterCell(currentTweet.timestampString)
             retweetCountLabel.text = String(currentTweet.retweetCount)
             favoritesCountLabel.text = String(currentTweet.favoritesCount)
+            
+            //Manage whether the tweet has already been favorited or retweeted
+            if currentTweet.favorited {
+                favoriteImageView.image = UIImage(named: "like-action-on")
+            }
+            if currentTweet.retweeted {
+                retweetImageView.image = UIImage(named: "retweet-action-on")
+            }
         }
     }
     
@@ -60,30 +68,63 @@ class TweetTableViewCell: UITableViewCell {
     }
     
     @IBAction func onRetweet(sender: AnyObject) {
-        //Change the image
-        retweetImageView.image = UIImage(named: "retweet-action-on")
-        let newCount = Int(retweetCountLabel.text!)! + 1
-        retweetCountLabel.text = String(newCount)
-        
-        TwitterClient.sharedInstance.retweet(currentTweet.idString, success: { (returnTweet: Tweet) in
-            //Do something with return tweet
-        }) { (error: NSError) in
-            print("Error: \(error.localizedDescription)")
+        if !currentTweet.retweeted {
+            
+            //Change the image - begin retweet display and action
+            retweetImageView.image = UIImage(named: "retweet-action-on")
+            let newCount = Int(retweetCountLabel.text!)! + 1
+            retweetCountLabel.text = String(newCount)
+            
+            TwitterClient.sharedInstance.retweet(currentTweet.idString, success: { (returnTweet: Tweet) in
+                self.currentTweet.retweeted = true //does not change the object's server property, just manages to disallow another retweet in the table view
+                //Do something with return tweet
+            }) { (error: NSError) in
+                print("Error: \(error.localizedDescription)")
+            }
+            
+        } else {
+            //Change the image back - begin unretweet display and action
+            retweetImageView.image = UIImage(named: "retweet-action")
+            let newCount = Int(retweetCountLabel.text!)! - 1
+            retweetCountLabel.text = String(newCount)
+            
+            TwitterClient.sharedInstance.unretweet(currentTweet.idString, success: { (returnTweet: Tweet) in
+                self.currentTweet.retweeted = false
+            }, failure: { (error: NSError) in
+                    print("Error: \(error.localizedDescription)")
+            })
+            
         }
         
     }
     
     @IBAction func onFavorite(sender: AnyObject) {
-        //Change the image
-        favoriteImageView.image = UIImage(named: "like-action-on")
-        let newCount = Int(favoritesCountLabel.text!)! + 1
-        favoritesCountLabel.text = String(newCount)
         
-        TwitterClient.sharedInstance.favorite(currentTweet.idString, success: { (returnTweet: Tweet) in
-            //Do something with return tweet
-        }) { (error: NSError) in
-            print("Error: \(error.localizedDescription)")
+        if !currentTweet.favorited {
+            //Change the image
+            favoriteImageView.image = UIImage(named: "like-action-on")
+            let newCount = Int(favoritesCountLabel.text!)! + 1
+            favoritesCountLabel.text = String(newCount)
+            
+            TwitterClient.sharedInstance.favorite(currentTweet.idString, success: { (returnTweet: Tweet) in
+                self.currentTweet.favorited = true
+                //Do something with return tweet
+            }) { (error: NSError) in
+                print("Error: \(error.localizedDescription)")
+            }
+        } else {
+            //Change the image back
+            favoriteImageView.image = UIImage(named: "like-action")
+            let newCount = Int(favoritesCountLabel.text!)! - 1
+            favoritesCountLabel.text = String(newCount)
+            
+            TwitterClient.sharedInstance.unfavorite(currentTweet.idString, success: { (Tweet) in
+                self.currentTweet.favorited = false
+            }, failure: { (error: NSError) in
+                    print("Error: \(error.localizedDescription)")
+            })
         }
+        
     }
     
 }
