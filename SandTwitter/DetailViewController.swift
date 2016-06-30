@@ -37,7 +37,7 @@ class DetailViewController: UIViewController {
         nameLabel.text = tweet.creationUser?.name
         screenNameLabel.text = "@\(tweet.creationUser!.screenname!)"
         contentLabel.text = tweet.text
-        timestampLabel.text = String(tweet.timestamp!)
+        timestampLabel.text = String(TimeAid.getReadableDateFromFormat(tweet.timestampString!))
         retweetCount.text = String(tweet.retweetCount)
         favoritesCount.text = String(tweet.favoritesCount)
     }
@@ -49,6 +49,7 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func onRetweet(sender: AnyObject) {
+        print("retweet in detail clicked")
         //Change the image
         retweetImageView.image = UIImage(named: "retweet-action-on")
         let newCount = Int(retweetCount.text!)! + 1
@@ -62,6 +63,7 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func onFavorite(sender: AnyObject) {
+        print("favorite in detail clicked")
         //Change the image
         favoriteImageView.image = UIImage(named: "like-action-on")
         let newCount = Int(favoritesCount.text!)! + 1

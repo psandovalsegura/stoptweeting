@@ -68,6 +68,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.profileButton.tag = indexPath.row
         return cell
     }
+    
+    @IBAction func onComposeTweet(sender: AnyObject) {
+        self.performSegueWithIdentifier("toTweetConfiguration", sender: nil)
+    }
 
     @IBAction func onLogout(sender: AnyObject) {
         TwitterClient.sharedInstance.logOut()
