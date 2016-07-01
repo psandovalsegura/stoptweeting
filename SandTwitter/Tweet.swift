@@ -20,10 +20,18 @@ class Tweet: NSObject {
     var timestampString: String!
     var idString: String!
     
+    var id: Int!
+    
     
     
     
     init(dictionary: NSDictionary) {
+//        if let reply = (dictionary["sandTwitterReplyTo"] as? String){
+//            text = "@\(reply) \(dictionary["text"] as! String)"
+//        } else {
+//            text = dictionary["text"] as? String
+//        }
+        
         text = dictionary["text"] as? String
         retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
         favoritesCount = (dictionary["favorite_count"] as? Int) ?? 0
@@ -52,6 +60,7 @@ class Tweet: NSObject {
             
             //Set up an id string - not a property that can be created by the SandTwitter client
             let postIdentification = dictionary["id"] as! Int
+            id = postIdentification
             idString = String(postIdentification)
         }
         

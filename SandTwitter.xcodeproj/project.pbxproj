@@ -20,6 +20,7 @@
 		9B8368D71D24F044001FB39C /* StatusConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8368D61D24F044001FB39C /* StatusConfigurationViewController.swift */; };
 		9B8368D91D251D25001FB39C /* DirectMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8368D81D251D25001FB39C /* DirectMessageViewController.swift */; };
 		9B8368FB1D25CB3F001FB39C /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8368FA1D25CB3F001FB39C /* InfiniteScrollActivityView.swift */; };
+		9B8368FD1D26ECA4001FB39C /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8368FC1D26ECA4001FB39C /* ReplyViewController.swift */; };
 		9BE65F741D217077002E8097 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE65F731D217077002E8097 /* AppDelegate.swift */; };
 		9BE65F791D217077002E8097 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE65F771D217077002E8097 /* Main.storyboard */; };
 		9BE65F7B1D217077002E8097 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BE65F7A1D217077002E8097 /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		9B8368D61D24F044001FB39C /* StatusConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusConfigurationViewController.swift; sourceTree = "<group>"; };
 		9B8368D81D251D25001FB39C /* DirectMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectMessageViewController.swift; sourceTree = "<group>"; };
 		9B8368FA1D25CB3F001FB39C /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
+		9B8368FC1D26ECA4001FB39C /* ReplyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplyViewController.swift; sourceTree = "<group>"; };
 		9BE65F701D217077002E8097 /* SandTwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SandTwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BE65F731D217077002E8097 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BE65F781D217077002E8097 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				9B8368D41D246215001FB39C /* MeViewController.swift */,
 				9B8368D61D24F044001FB39C /* StatusConfigurationViewController.swift */,
 				9B8368D81D251D25001FB39C /* DirectMessageViewController.swift */,
+				9B8368FC1D26ECA4001FB39C /* ReplyViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BE946931D239A5A00A52030 /* DetailViewController.swift in Sources */,
+				9B8368FD1D26ECA4001FB39C /* ReplyViewController.swift in Sources */,
 				9B8368D71D24F044001FB39C /* StatusConfigurationViewController.swift in Sources */,
 				9B8368D51D246215001FB39C /* MeViewController.swift in Sources */,
 				9B8368D91D251D25001FB39C /* DirectMessageViewController.swift in Sources */,

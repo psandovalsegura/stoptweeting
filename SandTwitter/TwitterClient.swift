@@ -66,6 +66,7 @@ class TwitterClient: BDBOAuth1SessionManager {
         let requestString: String!
         if maxID == nil {
             requestString = "1.1/statuses/home_timeline.json"
+            print("chose \(requestString)")
         } else {
             requestString = "1.1/statuses/home_timeline.json?max_id=\(maxID)"
         }
@@ -166,6 +167,7 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    
     func postTweet(status: String, success:() -> Void, failure: (NSError) -> Void) {
         let params = ["status" : status]
         POST("1.1/statuses/update.json", parameters: params, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
@@ -176,9 +178,39 @@ class TwitterClient: BDBOAuth1SessionManager {
             failure(error)
         }
     }
-
+    
+    
+    func replyToTweet(status: String, inReplyToUsername: String, inReplyToID: String, success:() -> Void, failure: (NSError) -> Void) {
+        let params = ["status" : status, "in_reply_to_status_id" : inReplyToID] //"@\(inReplyToUsername) \(status)"
+        
+        POST("1.1/statuses/update.json", parameters: params, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+            
+            print("Reply tweeted!")
+            
+        }) { (task: NSURLSessionDataTask?, error: NSError) in
+            failure(error)
+        }
+    }
 
     
+    func getTweet(idString: String, success:(Tweet) -> Void, failure: (NSError) -> Void) {
+        
+        GET("1.1/statuses/show.json?id=\(idString)", parameters: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+            
+            let tweetDictionary = response as! NSDictionary
+            let tweetReturned = Tweet(dictionary: tweetDictionary)
+            
+            success(tweetReturned)
+            
+        }) { (task: NSURLSessionDataTask?, error: NSError) in
+            failure(error)
+        }
+    }
+    
+    
+    
+    
+
 }
 
 

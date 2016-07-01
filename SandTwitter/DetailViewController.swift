@@ -44,9 +44,11 @@ class DetailViewController: UIViewController {
 
     
     @IBAction func onShare(sender: AnyObject) {
-        
+        print("Tapped share in detail view")
+        self.performSegueWithIdentifier("toReply", sender: nil)
         
     }
+    
     
     @IBAction func onRetweet(sender: AnyObject) {
         print("retweet in detail clicked")
@@ -76,5 +78,22 @@ class DetailViewController: UIViewController {
         }
         
     }
+    
+    
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("Start to segue to the Reply View Controller")
+        if segue.identifier == "toReply" {
+            let replyVC = segue.destinationViewController as! ReplyViewController
+            replyVC.tweet = self.tweet
+        }
+        
+        
+        
+        
+     }
+    
     
 }

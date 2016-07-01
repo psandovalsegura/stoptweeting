@@ -12,7 +12,7 @@ import AlamofireImage
 
 class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
-    public static var LAST_LOADED_TWEETS: [Tweet]! //For access by other classes - set in viewWillDisappear
+    static var LAST_LOADED_TWEETS: [Tweet]! //For access by other classes - set in viewWillDisappear
     var tweets: [Tweet]! // Not a necessary version - tweets that user posts cannot be immediately favorited or retweeted because they do not have a unique ID
     
     var refreshControl = UIRefreshControl()
@@ -27,8 +27,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         //If the tweets have been loaded before, there may have been an upload from the user
         if TweetsViewController.LAST_LOADED_TWEETS != nil {
+            print("loaded tweets is nil")
             tableView.reloadData()
         } else {
+            print("loaded tweets DO NOT exist")
             loadTweetData("initial")
         }
         
