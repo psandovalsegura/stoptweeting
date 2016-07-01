@@ -19,7 +19,7 @@ class StatusConfigurationViewController: UIViewController {
     var charactersAllowed = 140
     var currentCharacters = 0
     
-    var uploadedTweet: Tweet?
+    var uploadedTweet: Tweet!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,11 +46,26 @@ class StatusConfigurationViewController: UIViewController {
     }
     
     @IBAction func onSendTweet(sender: AnyObject) {
-        TwitterClient.sharedInstance.postTweet(textField.text!, success: { 
-            //
+        //Construct a Tweet object to be sent to the home view - simulating a rapid upload, UPGRADE -- does not have ID!
+        //Prepare timestamp
+        let time = String(NSDate())
+        var currentDate2String = time
+        for _ in 1...6 {
+            currentDate2String.removeAtIndex(currentDate2String.endIndex.predecessor())
+        }
+        //The tweet is marked as created by the client through the 'sandTwitter' key
+        let tweetDictionary: NSDictionary = ["text": textField.text!, "retweet_count": 0, "favorite_count" : 0, "created_at": TimeAid.getFormattedDate(), "user": (User.currentUser?.dictionary)!, "favorited": false, "retweeted": false, "sandTwitter": true]
+        
+        uploadedTweet = Tweet(dictionary: tweetDictionary)
+        
+        TwitterClient.sharedInstance.postTweet(textField.text!, success: {
+            
         }) { (error: NSError) in
             print(error.localizedDescription)
         }
+        
+        //Segue home
+        self.performSegueWithIdentifier("onTweetSend", sender: nil)
     }
     
     
@@ -78,8 +93,14 @@ class StatusConfigurationViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Load the new tweet into the home view without reloading data
-        if segue.identifier == "onTweetSend", let homeVC = segue.destinationViewController as? TweetsViewController {
-            
+        if segue.identifier == "onTweetSend", let tabVC = segue.destinationViewController as? UITabBarController {
+            let navigationVC = tabVC.viewControllers![0] as! UINavigationController
+            let homeVC = navigationVC.viewControllers[0] as! TweetsViewController
+            print("Tweet is being inserted into the feed")
+            TweetsViewController.LAST_LOADED_TWEETS.insert(uploadedTweet, atIndex: 0) //Insert the new tweet
+            //homeVC.tableView.reloadData()
+            print("The first tweet should be \(TweetsViewController.LAST_LOADED_TWEETS[0].text) by \(TweetsViewController.LAST_LOADED_TWEETS[0].creationUser!.name)")
+            print("Home view controller is reloading data...")
         }
     }
  

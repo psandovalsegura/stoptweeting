@@ -28,22 +28,32 @@ class Tweet: NSObject {
         retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
         favoritesCount = (dictionary["favorite_count"] as? Int) ?? 0
         
-        let timestampString = dictionary["created_at"] as? String
         
-        if let timestampString = timestampString {
-            let formatter = NSDateFormatter()
+        //Check if the tweet was created by the SandTwitter client -- this can be checked if the tweet dictionary has a SandTwitter key
+        if let key = dictionary["sandTwitter"] {
+            self.timestampString = dictionary["created_at"] as? String
+        } else {
+            //Extract Twitter timestamp format
+            let timestampString = dictionary["created_at"] as? String
             
-            formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
-            timestamp = formatter.dateFromString(timestampString)
+            if let timestampString = timestampString {
+                let formatter = NSDateFormatter()
+                
+                formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
+                timestamp = formatter.dateFromString(timestampString)
+            }
+            //Prepare timestamp for use in TimeAid class
+            let time = String(timestamp!)
+            var currentDate2String = time
+            for _ in 1...6 {
+                currentDate2String.removeAtIndex(currentDate2String.endIndex.predecessor())
+            }
+            self.timestampString = currentDate2String
+            
+            //Set up an id string - not a property that can be created by the SandTwitter client
+            let postIdentification = dictionary["id"] as! Int
+            idString = String(postIdentification)
         }
-        
-        //Prepare timestamp for use in TimeAid class
-        let time = String(timestamp!)
-        var currentDate2String = time
-        for _ in 1...6 {
-            currentDate2String.removeAtIndex(currentDate2String.endIndex.predecessor())
-        }
-        self.timestampString = currentDate2String
         
         let userDictionary = dictionary["user"] as! NSDictionary
         creationUser = User(dictionary: userDictionary)
@@ -51,9 +61,6 @@ class Tweet: NSObject {
         favorited = dictionary["favorited"] as! Bool
         retweeted = dictionary["retweeted"] as! Bool
         
-        //Set up an id string
-        let postIdentification = dictionary["id"] as! Int
-        idString = String(postIdentification)
         
     }
     

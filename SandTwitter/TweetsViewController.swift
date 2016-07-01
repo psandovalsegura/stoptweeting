@@ -12,7 +12,8 @@ import AlamofireImage
 
 class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
-    var tweets: [Tweet]!
+    public static var LAST_LOADED_TWEETS: [Tweet]! //For access by other classes - set in viewWillDisappear
+    var tweets: [Tweet]! // Not a necessary version - tweets that user posts cannot be immediately favorited or retweeted because they do not have a unique ID
     
     var refreshControl = UIRefreshControl()
     var isMoreDataLoading = false
@@ -24,9 +25,14 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //If the tweets have been loaded before, there may have been an upload from the user
+        if TweetsViewController.LAST_LOADED_TWEETS != nil {
+            tableView.reloadData()
+        } else {
+            loadTweetData("initial")
+        }
         
         // Do any additional setup after loading the view.
-        loadTweetData("initial")
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -84,7 +90,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func loadTweetData(point: AnyObject) {
         TwitterClient.sharedInstance.homeTimeline(nil, success: { (tweets: [Tweet]) in
             
-            self.tweets = tweets
+            TweetsViewController.LAST_LOADED_TWEETS = tweets
             self.tableView.reloadData()
             
         }) { (error: NSError) in
@@ -101,7 +107,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         TwitterClient.sharedInstance.homeTimeline(maxID, success: { (tweets: [Tweet]) in
             self.loadingMoreView!.stopAnimating()
-            self.tweets.appendContentsOf(tweets)
+            TweetsViewController.LAST_LOADED_TWEETS.appendContentsOf(tweets)
             
             self.tableView.reloadData()
             
@@ -115,11 +121,11 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     func updateMaxID() {
         //To be called after the set of the tweets variable
-        maxID = self.tweets.last?.idString
+        maxID = TweetsViewController.LAST_LOADED_TWEETS.last?.idString
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let tweets = self.tweets {
+        if let tweets = TweetsViewController.LAST_LOADED_TWEETS {
             return tweets.count
         } else {
             return 0
@@ -128,18 +134,27 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tweetCell") as! TweetTableViewCell
-        cell.currentTweet = self.tweets[indexPath.row]
+        cell.currentTweet = TweetsViewController.LAST_LOADED_TWEETS[indexPath.row]
         cell.profileButton.tag = indexPath.row
         return cell
     }
     
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+//        if TweetsViewController.LAST_LOADED_TWEETS != nil {
+//            print("View will appear called")
+//            print("The first tweet should be \(TweetsViewController.LAST_LOADED_TWEETS[0].text)")
+//            tableView.dataSource = self
+//            tableView.delegate = self
+//            tableView.reloadData()
+//        }
+        
         
         if let path = tableView.indexPathForSelectedRow {
             
             tableView.deselectRowAtIndexPath(path, animated: true)
         }
+        
+        self.tableView.reloadData()
     }
     
     @IBAction func onComposeTweet(sender: AnyObject) {
@@ -158,9 +173,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if segue.identifier == "toDetailView", let detailVC = segue.destinationViewController as? DetailViewController {
             let cell = sender as! UITableViewCell
             let indexPath = tableView.indexPathForCell(cell)
-            detailVC.tweet = self.tweets[(indexPath?.row)!]
+            detailVC.tweet = TweetsViewController.LAST_LOADED_TWEETS[(indexPath?.row)!]
         } else if segue.identifier == "toProfileView", let profileVC = segue.destinationViewController as? ProfileViewController {
-            let currentTweet = self.tweets[sender!.tag]
+            let currentTweet = TweetsViewController.LAST_LOADED_TWEETS[sender!.tag]
             profileVC.user = currentTweet.creationUser!
         }
     }

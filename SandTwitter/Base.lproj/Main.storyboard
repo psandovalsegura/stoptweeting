@@ -790,7 +790,6 @@
                                         </state>
                                         <connections>
                                             <action selector="onSendTweet:" destination="7T0-Et-z6i" eventType="touchUpInside" id="fZU-VR-BMo"/>
-                                            <segue destination="YR1-Nv-kqB" kind="presentation" identifier="onTweetSend" id="vIk-St-KW3"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -841,6 +840,7 @@
                         <outlet property="characterCountLabel" destination="oXv-1g-G3O" id="tUc-oQ-d59"/>
                         <outlet property="profileImageView" destination="Q0u-Ef-hvG" id="zK3-GA-bC8"/>
                         <outlet property="textField" destination="hM6-Mo-FME" id="u17-7z-IPc"/>
+                        <segue destination="YR1-Nv-kqB" kind="presentation" identifier="onTweetSend" id="oAS-ei-pqW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XDb-cG-hmG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1528,6 +1528,6 @@
         <image name="retweet-action" width="75" height="72"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vIk-St-KW3"/>
+        <segue reference="oAS-ei-pqW"/>
     </inferredMetricsTieBreakers>
 </document>
