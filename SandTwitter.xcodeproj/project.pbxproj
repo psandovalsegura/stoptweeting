@@ -31,6 +31,7 @@
 		9BE65F8F1D21CDA2002E8097 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE65F8E1D21CDA2002E8097 /* TwitterClient.swift */; };
 		9BE946931D239A5A00A52030 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE946921D239A5A00A52030 /* DetailViewController.swift */; };
 		9BE946951D23A28300A52030 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE946941D23A28300A52030 /* ProfileViewController.swift */; };
+		9BEE25681D27329200414FB5 /* MentionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEE25671D27329200414FB5 /* MentionsViewController.swift */; };
 		F20052BCE1116F062767A762 /* Pods_SandTwitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99823ED158F5FF5DD98C4F70 /* Pods_SandTwitter.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		9BE65F8E1D21CDA2002E8097 /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 		9BE946921D239A5A00A52030 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9BE946941D23A28300A52030 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		9BEE25671D27329200414FB5 /* MentionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentionsViewController.swift; sourceTree = "<group>"; };
 		E322D24E11FDA56B7FF82C13 /* Pods-SandTwitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SandTwitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SandTwitter/Pods-SandTwitter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,6 +183,7 @@
 				9B8368D61D24F044001FB39C /* StatusConfigurationViewController.swift */,
 				9B8368D81D251D25001FB39C /* DirectMessageViewController.swift */,
 				9B8368FC1D26ECA4001FB39C /* ReplyViewController.swift */,
+				9BEE25671D27329200414FB5 /* MentionsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				9BE946931D239A5A00A52030 /* DetailViewController.swift in Sources */,
 				9B8368FD1D26ECA4001FB39C /* ReplyViewController.swift in Sources */,
 				9B8368D71D24F044001FB39C /* StatusConfigurationViewController.swift in Sources */,
+				9BEE25681D27329200414FB5 /* MentionsViewController.swift in Sources */,
 				9B8368D51D246215001FB39C /* MeViewController.swift in Sources */,
 				9B8368D91D251D25001FB39C /* DirectMessageViewController.swift in Sources */,
 				9BE65F8F1D21CDA2002E8097 /* TwitterClient.swift in Sources */,
